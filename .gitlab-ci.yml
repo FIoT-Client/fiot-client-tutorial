@@ -1,0 +1,10 @@
+image: ruby:2.3
+
+bootstrap:
+  stage: build
+  script:
+    - gem install jekyll minima
+    - jekyll new jekyll
+  artifacts:
+    paths:
+      - jekyll
