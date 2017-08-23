@@ -2,8 +2,8 @@ import sys
 import time
 from random import randint
 
-from context import FiwareContextClient
-from iot import FiwareIotClient
+from fiotclient.context import FiwareContextClient
+from fiotclient.iot import FiwareIotClient
 
 if __name__ == '__main__':
     arguments = []
@@ -20,25 +20,25 @@ if __name__ == '__main__':
     LED_ENTITY_ID = "LED001"
     LED_FILE_PATH = DEVICE_FILE_ROOT + "LED.json"
 
-    iot_client = FiwareIotClient("config.ini")
-    context_client = FiwareContextClient("config.ini")
+    client_iot = FiwareIotClient("config.ini")
+    client_context = FiwareContextClient("config.ini")
 
     if '--no-register-device' not in arguments:
-        iot_client.register_device(LDR_FILE_PATH, LDR_DEVICE_ID, LDR_ENTITY_ID)
-        iot_client.register_device(LED_FILE_PATH, LED_DEVICE_ID, LED_ENTITY_ID)
+        client_iot.register_device(LDR_FILE_PATH, LDR_DEVICE_ID, LDR_ENTITY_ID)
+        client_iot.register_device(LED_FILE_PATH, LED_DEVICE_ID, LED_ENTITY_ID)
 
     if '--no-subscribe-cygnus' not in arguments:
-        context_client.subscribe_cygnus(LDR_ENTITY_ID, ["luminosity"])
-        context_client.subscribe_cygnus(LED_ENTITY_ID, ["state"])
+        client_context.subscribe_cygnus(LDR_ENTITY_ID, ["luminosity"])
+        client_context.subscribe_cygnus(LED_ENTITY_ID, ["state"])
 
     if '--no-subscribe-sth' not in arguments:
-        context_client.subscribe_historical_data(LDR_ENTITY_ID, ["luminosity"])
+        client_context.subscribe_historical_data(LDR_ENTITY_ID, ["luminosity"])
 
     try:
         while True:
             reading = randint(0, 255)
             print('Sending LDR reading:', reading)
-            iot_client.send_observation(LDR_DEVICE_ID, {'l': reading}, protocol='mqtt')
+            client_iot.send_observation(LDR_DEVICE_ID, {'l': reading}, protocol='MQTT')
             time.sleep(10)
     except KeyboardInterrupt:
         pass
