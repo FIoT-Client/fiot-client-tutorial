@@ -6,12 +6,14 @@ services:
     container_name: mongodb
     expose:
       - "27017"
+    ports:
+      - "27017:27017"
     volumes:
       - mongodb-volume:/data
     command: mongod --smallfiles
 
   orion:
-    image: fiware/orion:latest
+    image: fiware/orion:1.7.0
     hostname: orion
     container_name: orion
     links:
@@ -32,7 +34,7 @@ services:
       - "1883:1883"
 
   idas:
-    image: fiware/iotagent-ul:develop
+    image: fiware/iotagent-ul:1.3.0
     hostname: idas
     container_name: idas
     volumes:
