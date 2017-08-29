@@ -7,15 +7,15 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(11, GPIO.IN)     # read output from PIR motion sensor
-GPIO.setup(3, GPIO.OUT)     # LED output pin
+GPIO.setup(3, GPIO.OUT)     # FAN output pin
 
 PIR_DEVICE_ID = "STELA_PIR"
 FAN_DEVICE_ID = "STELA_FAN"
 
 MQTT_BROKER_ADDRESS = '10.7.49.163'
-SERVICE_NAME = 'TestService'
-SERVICE_PATH = '/test'
-SERVICE_API_KEY = "f8a06f50886c11e79ed360f81db4b630"
+SERVICE_NAME = 'RpiService'
+SERVICE_PATH = '/rpi'
+SERVICE_API_KEY = "6026bc2a8c4f11e79f9eb827eb3e58ef"
 
 
 def on_connect(client, userdata, flags, rc):
@@ -30,7 +30,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     topic = msg.topic
     print("Topic: " + topic)
-    incoming_message = msg.payload.decode("utf-8")  # ex: STELA_LED@change_state|ON
+    incoming_message = msg.payload.decode("utf-8")  # ex: STELA_FAN@change_state|ON
     print("Message: " + incoming_message)
 
     splitted_incoming_message = incoming_message.split('@')
@@ -79,10 +79,10 @@ while True:
     iot_client.send_observation(PIR_DEVICE_ID, {'p': presence}, protocol='MQTT')
 
     if not presence:                 # when output from motion sensor is LOW
-        print("No intruders")
-        GPIO.output(3, 0)            # turn OFF LED
+        print("No presence")
+        GPIO.output(3, 0)            # turn OFF FAN
     else:                            # when output from motion sensor is HIGH
-        print("Intruder detected")
-        GPIO.output(3, 1)            # turn ON LED
+        print("Presence detected")
+        GPIO.output(3, 1)            # turn ON FAN
 
     time.sleep(5)                    # wait for 5 seconds
