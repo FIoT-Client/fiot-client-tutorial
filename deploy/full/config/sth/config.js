@@ -59,9 +59,9 @@ config.database = {
   // "collection-per-entity".
   dataModel: 'collection-per-entity',
   // The username to use for the database connection. Default value: "".
-  user: '',
+  user: 'YOUR_MONGODB_USER',
   // The password to use for the database connection. Default value: "".
-  password: '',
+  password: 'YOUR_MONGODB_PASSWORD',
   // The URI to use for the database connection. It supports replica set URIs. This does not
   // include the "mongo://" protocol part. Default value: "localhost:27017"
   URI: 'mongodb-cygnus:27017',

@@ -24,7 +24,7 @@ services:
       - CYGNUS_LOG_LEVEL=INFO
 
   mysql-cygnus:
-    image: mysql
+    image: mysql:5.7
     hostname: mysql-cygnus
     container_name: mysql-cygnus
     expose:
@@ -37,7 +37,7 @@ services:
       - mysql-cygnus-volume:/var/lib/mysql
 
   mongodb-cygnus:
-    image: mongo:3.4.2
+    image: mongo:3.4.7
     hostname: mongodb-cygnus
     container_name: mongodb-cygnus
     expose:
@@ -52,7 +52,7 @@ services:
     command: mongod --smallfiles
 
   sth-comet:
-    image: telefonicaiot/fiware-sth-comet
+    image: telefonicaiot/fiware-sth-comet:2.2.0
     hostname: sth-comet
     container_name: sth-comet
     volumes:

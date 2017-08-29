@@ -10,12 +10,13 @@ GPIO.setup(11, GPIO.IN)     # read output from PIR motion sensor
 GPIO.setup(3, GPIO.OUT)     # LED output pin
 
 PIR_DEVICE_ID = "STELA_PIR"
-FAN_DEVICE_ID = "STELA_LED"
+FAN_DEVICE_ID = "STELA_FAN"
 
 MQTT_BROKER_ADDRESS = '10.7.49.163'
 SERVICE_NAME = 'TestService'
 SERVICE_PATH = '/test'
 SERVICE_API_KEY = "f8a06f50886c11e79ed360f81db4b630"
+
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -23,6 +24,7 @@ def on_connect(client, userdata, flags, rc):
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe("/{}/{}/cmd".format(SERVICE_API_KEY, FAN_DEVICE_ID))
+
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -54,11 +56,6 @@ def on_message(client, userdata, msg):
         else:
             print('Unknown parameter')
             client.publish(response_topic, payload_response_error)
-
-    elif cmd_name == 'change_speed':
-        print('Change speed')
-        client.publish(response_topic, payload_response_error)
-
     else:
         print('Unknown command')
         client.publish(response_topic, payload_response_error)

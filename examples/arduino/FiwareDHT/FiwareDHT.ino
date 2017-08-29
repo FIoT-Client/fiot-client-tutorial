@@ -31,7 +31,7 @@ PubSubClient client(server, 1883, callback, ethClient);
 
 dht DHT;
 
-const char* cmdAnswerTopic = "/2fb0f72689c611e7bb5860f81db4b630/STELA_LED/cmdexe";
+const char* cmdAnswerTopic = "/3495337a8b9b11e7830060f81db4b630/STELA_LED/cmdexe";
 const char* payloadOn = "STELA_LED@change_state|ON";
 const char* payloadOff = "STELA_LED@change_state|OFF";
 const char* payloadOk = "STELA_LED@change_state|OK";
@@ -118,7 +118,7 @@ void publishMeasurements() {
       sprintf(measurementPayloadBuf, "h|%s|t|%s", strHumidity, strTemperature);
       Serial.println(measurementPayloadBuf);
 
-      client.publish("/2fb0f72689c611e7bb5860f81db4b630/STELA_DHT/attrs", measurementPayloadBuf);
+      client.publish("/3495337a8b9b11e7830060f81db4b630/STELA_DHT/attrs", measurementPayloadBuf);
 
       Serial.println("Mesurement sent!");
       sendMeasurementSuccess = true;
@@ -139,7 +139,7 @@ void reconnect() {
       Serial.println("Connected!");
 
       Serial.println("Subscribing LED command topic...");
-      if(client.subscribe("/2fb0f72689c611e7bb5860f81db4b630/STELA_LED/cmd")) {
+      if(client.subscribe("/3495337a8b9b11e7830060f81db4b630/STELA_LED/cmd")) {
         Serial.println("Successfully subscribed to topic!");
       } else {
         Serial.println("Error while subscribing to topic.");
