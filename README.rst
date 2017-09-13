@@ -58,8 +58,7 @@ Instalando o back-end: Docker
 
 .. begin-docker
 
-Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada abaixo, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma:
-
+Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
 
 Nela é possível identificar componentes responsáveis pela comunicação com dispositivos (IDAS), armazenamento e manipulação de informações de contexto (Orion Context Broker), comunicação com bases de dados para armazenamento de medições (Cygnus) e as próprias bases de dados utilizadas para realizar essa persistência, tendo sido escolhidos para a execução do tutorial um banco de dados *MySQL* e um *MongoDB*, além do componente FIWARE responsável pelo armazenamento de dados históricos, possibilitando o armazenamento e consulta de dados históricos agregados (STH Comet).
 
