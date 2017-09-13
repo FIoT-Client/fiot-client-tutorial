@@ -149,7 +149,7 @@ Configurar arquivo de configuração (config.ini)
 """""""""""""""""""""""""""""""""""""""""""""""
 
 Para iniciar o registro do dispositivo, primeiro devemos criar um arquivo de configuração, porém para facilitar o andamento do tutorial, há um arquivo 
-pré-programado de configuração neste `repositório <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/tree/master/examples/arduino/FiwareDHT>`__,
+pré-programado de configuração neste `repositório <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/config.ini`_,
 no qual a partir dele o usuário pode alterar os valores dos endereços dos componentes dos quais ele irá utilizar.
 
 
