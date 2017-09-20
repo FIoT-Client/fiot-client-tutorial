@@ -264,7 +264,7 @@ Raspberry Pi
 
 .. begin-programming-RaspberryPi
 
-Em Breve!
+Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT22 AM2302, no qual o arquivo se encontra neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
 
 .. end-programming-RaspberryPi
 
@@ -290,8 +290,8 @@ Consulta ao banco de dados
 
 .. begin-visualize-Database
 
-
 Em Breve!
+
 
 .. end-visualize-Database
 
@@ -300,7 +300,13 @@ Mysql
 
 .. begin-visualize-mysql
 
-Em Breve!
+Ao fazer a criação do Service, é criado um banco de dados com o nome do Service criado, com o seu nome em minúsculo. Para cada Service Path criado é feita uma tabela dentro do banco, com o nome da tabela no formato "Service Path_ID da entidade_ Tipo da entidade".
+
+Para acessar o banco que está sendo utilizado no Service, é utilizado o comando: use "BANCO_DE_DADOS"; sem aspas.
+
+Para checar todos os dados de um service Path, é utilizado o comando: Select * from "TABELA_DO_BANCO_DE_DADOS"; sem aspas.
+
+
 
 .. end-visualize-mysql
 
