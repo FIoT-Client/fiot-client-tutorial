@@ -1,6 +1,11 @@
 **************************************************
 Tutorial de instalação e utilização do FIoT-Client
 **************************************************
+Autores:
+
+- Carlos Eduardo da Silva (Orientador)
+- Lucas Cristiano Calixto Dantas
+- Lucas Ramon Bandeira da Silva
 
 .. contents::
    :local:
@@ -300,13 +305,19 @@ Mysql
 
 .. begin-visualize-mysql
 
-Ao fazer a criação do Service, é criado um banco de dados com o nome do Service criado, com o seu nome em minúsculo. Para cada Service Path criado é feita uma tabela dentro do banco, com o nome da tabela no formato "Service Path_ID da entidade_ Tipo da entidade".
+Ao fazer a criação do Service, é criado um banco de dados com o mesmo nome utilizado no momento do cadastro, porém, todo em letras minúsculas. Para cada Entidade registrada é também criada, no banco de dados do seu respectivo serviço, uma tabela no formato "SERVICE_PATH" + "_" + "ID_ENTIDADE" + "_" + "TIPO_ENTIDADE".
 
-Para acessar o banco que está sendo utilizado no Service, é utilizado o comando: use "BANCO_DE_DADOS"; sem aspas.
+Para acessar o banco que está sendo utilizado no Service é utilizado o comando: ::
 
-Para checar todos os dados de um service Path, é utilizado o comando: Select * from "TABELA_DO_BANCO_DE_DADOS"; sem aspas.
+use NOME_DO_BANCO_DE_DADOS;
 
+Onde 'NOME_DO_BANCO_DE_DADOS' deve ser substituído pelo nome do banco criado para o serviço.
 
+Em seguida, selecionado o banco de dados do Service, para checar todos os dados registrados em uma entidade é utilizado o comando: ::
+
+SELECT * FROM TABELA_DA_ENTIDADE;
+
+Onde 'TABELA_DA_ENTIDADE' deve ser substituído pelo nome da tabela criada para a entidade desejada.
 
 .. end-visualize-mysql
 
