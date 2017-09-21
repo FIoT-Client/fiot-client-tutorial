@@ -1,16 +1,23 @@
 **************************************************
 Tutorial de instalação e utilização do FIoT-Client
 **************************************************
-Autores:
-
-- Carlos Eduardo da Silva (Orientador)
-- Lucas Cristiano Calixto Dantas
-- Lucas Ramon Bandeira da Silva
 
 .. contents::
    :local:
    :depth: 3
 
+
+.. _autores:
+
+Autores
+=======
+
+
+Autores:
+
+-  `Carlos Eduardo da Silva (Orientador)  <https://projetos.imd.ufrn.br/kaduardo>`__ -> `Contato <kaduardo@imd.ufrn.br>`__
+-  `Lucas Cristiano Calixto Dantas <https://github.com/lucascriistiano>`__ -> `Contato <lucascristiano27@gmail.com>`__
+-  `Lucas Ramon Bandeira da Silva <https://github.com/lucasramon>`__ -> `Contato <lucas.ramon.jc@gmail.com>`__
 
 
 
@@ -307,15 +314,23 @@ Mysql
 
 Ao fazer a criação do Service, é criado um banco de dados com o mesmo nome utilizado no momento do cadastro, porém, todo em letras minúsculas. Para cada Entidade registrada é também criada, no banco de dados do seu respectivo serviço, uma tabela no formato "SERVICE_PATH" + "_" + "ID_ENTIDADE" + "_" + "TIPO_ENTIDADE".
 
-Para acessar o banco que está sendo utilizado no Service é utilizado o comando: ::
+Para acessar o banco que está sendo utilizado no Service é utilizado o comando: 
 
-use NOME_DO_BANCO_DE_DADOS;
+
+.. code-block:: sql
+   
+
+   use NOME_DO_BANCO_DE_DADOS
 
 Onde 'NOME_DO_BANCO_DE_DADOS' deve ser substituído pelo nome do banco criado para o serviço.
 
-Em seguida, selecionado o banco de dados do Service, para checar todos os dados registrados em uma entidade é utilizado o comando: ::
+Em seguida, selecionado o banco de dados do Service, para checar todos os dados registrados em uma entidade é utilizado o comando: 
 
-SELECT * FROM TABELA_DA_ENTIDADE;
+
+.. code-block:: sql
+   
+
+ SELECT * FROM TABELA_DA_ENTIDADE
 
 Onde 'TABELA_DA_ENTIDADE' deve ser substituído pelo nome da tabela criada para a entidade desejada.
 
