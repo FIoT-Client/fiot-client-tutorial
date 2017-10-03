@@ -70,7 +70,11 @@ Instalando o back-end: Docker
 
 .. begin-docker
 
-Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
+Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada na figura abaixo, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
+
+.. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg
+Figura 01 - Arquitetura dos componentes FIWARE selecionados para o tutorial
+
 
 Nela é possível identificar componentes responsáveis pela comunicação com dispositivos (IDAS), armazenamento e manipulação de informações de contexto (Orion Context Broker), comunicação com bases de dados para armazenamento de medições (Cygnus) e as próprias bases de dados utilizadas para realizar essa persistência, tendo sido escolhidos para a execução do tutorial um banco de dados *MySQL* e um *MongoDB*, além do componente FIWARE responsável pelo armazenamento de dados históricos, possibilitando o armazenamento e consulta de dados históricos agregados (STH Comet).
 
@@ -82,7 +86,7 @@ Inicialmente é necessário realizar a instalação do Docker em sua máquina, c
 
 Também é necessário instalar a ferramenta docker-compose, que possibilitará que o ambiente composto por todos os componentes selecionados possa ser facilmente executado. Os passos para a instalação podem ser acessados no `link <https://docs.docker.com/compose/install>`__.
 
-Tendo instalado corretamente o Docker e o docker-compose, você está pronto para rodar o ambiente. Para isso, você deverá acessar o diretório no qual o repositório de tutorial foi clonado, no qual existe um arquivo chamado `docker-compose.yml <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/deploy/full/docker-compose.yml>`__, e, a partir da linha de comando do seu sistema operacional, executar o comando: ::
+Tendo instalado corretamente o Docker e o docker-compose, você está pronto para rodar o ambiente. Para isso, você deverá acessar o diretório no qual o repositório de tutorial foi clonado, no qual existe um arquivo chamado `docker-compose.yml <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/deploy/full/docker-compose.yml>`__, e, a partir da linha de comando do seu sistema operacional, executar o comando: ::
 
 $ docker-compose up -d
 
@@ -107,7 +111,7 @@ $ cd meu-diretorio
 
 Após a criação do diretório, é criado um ambiente virtual Python ::
 
-$ python -m venv .meu-ambiente
+$ python3 -m venv .meu-ambiente
 
 Para ativá-lo, usamos o comando source ::
 
@@ -123,7 +127,7 @@ Instalação da biblioteca FIoT-Client
 
 Para a instalação da biblioteca, é usado o comando ::
 
-$ (.meu-ambiente) pip install -e git+https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-python.git#egg=fiotclient
+$ (.meu-ambiente) pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
 
 
 E para testar se a instalção foi feita corretamente, fazemos o comando de import do Python ::
@@ -160,7 +164,7 @@ Configurar arquivo de configuração (config.ini)
 """""""""""""""""""""""""""""""""""""""""""""""
 
 Para iniciar o registro do dispositivo, primeiro devemos criar um arquivo de configuração, porém para facilitar o andamento do tutorial, há um arquivo 
-pré-programado de configuração neste `repositório <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__,
+pré-programado de configuração neste `repositório <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__,
 no qual a partir dele o usuário pode alterar os valores dos endereços dos componentes dos quais ele irá utilizar.
 
 
@@ -194,7 +198,7 @@ Usando os valores guardados anteriormente. Com isso, o passo seguinte se dá por
   
 >>> client_iot.set_api_key('API_KEY')
 
-Depois de feita todas as atribuições, o próximo passo é registrar o dispositivo, no qual é definido por um arquivo no formato JSON, em que alguns exemplos de dispositivos podem ser encontrados neste `repositório <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
+Depois de feita todas as atribuições, o próximo passo é registrar o dispositivo, no qual é definido por um arquivo no formato JSON, em que alguns exemplos de dispositivos podem ser encontrados neste `repositório <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
 É recomendado que os arquivos dos disposítivos estejam salvos no mesmo diretório de onde estará rodando a aplicação.
 
 Por fim, para registrar o dispositivo, é usado o seguinte comando: ::
@@ -265,7 +269,7 @@ Arduino
 
 .. begin-programming-Arduino
 
-Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT21 AM2301, no qual o arquivo se encontra neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
+Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT21 AM2301, no qual o arquivo se encontra neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
 
 
 .. end-programming-Arduino
@@ -276,7 +280,7 @@ Raspberry Pi
 
 .. begin-programming-RaspberryPi
 
-Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT22 AM2302, no qual o arquivo se encontra neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
+Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT22 AM2302, no qual o arquivo se encontra neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
 
 .. end-programming-RaspberryPi
 
