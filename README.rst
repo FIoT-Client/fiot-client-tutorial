@@ -72,7 +72,7 @@ Instalando o back-end: Docker
 
 Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada na figura abaixo, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
 
-.. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg
+.. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png
 Figura 01 - Arquitetura dos componentes FIWARE selecionados para o tutorial
 
 
