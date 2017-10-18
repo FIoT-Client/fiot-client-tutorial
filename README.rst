@@ -129,6 +129,10 @@ Para a instalação da biblioteca, é usado o comando ::
 
 $ (.meu-ambiente) pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
 
+Para casos em que não é utilizado o ambiente virtual, o comando acima deve ser usado com sudo ::
+
+$ sudo pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
+
 
 E para testar se a instalção foi feita corretamente, fazemos o comando de import do Python ::
 
