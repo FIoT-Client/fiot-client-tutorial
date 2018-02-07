@@ -72,6 +72,9 @@ Instalando o back-end: Docker
 
 Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada neste `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
 
+.. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png
+Figura 01 - Arquitetura dos componentes FIWARE selecionados para o tutorial
+
 Nela é possível identificar componentes responsáveis pela comunicação com dispositivos (IDAS), armazenamento e manipulação de informações de contexto (Orion Context Broker), comunicação com bases de dados para armazenamento de medições (Cygnus) e as próprias bases de dados utilizadas para realizar essa persistência, tendo sido escolhidos para a execução do tutorial um banco de dados *MySQL* e um *MongoDB*, além do componente FIWARE responsável pelo armazenamento de dados históricos, possibilitando o armazenamento e consulta de dados históricos agregados (STH Comet).
 
 Para criar o ambiente composto por todos esses componentes foi utilizada a ferramenta `Docker <https://www.docker.com>`__, que permite que, a partir de imagens disponibilizadas dos componentes FIWARE selecionados, seja possível definir parâmetros de configuração bem como a forma como ocorrerá a comunicação entre esses componentes e o modo que esses estarão acessíveis para uso por aplicações.
@@ -123,10 +126,9 @@ Instalação da biblioteca FIoT-Client
 
 Para a instalação da biblioteca, é usado o comando ::
 
-$ (.meu-ambiente) pip install -e git+https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-python.git#egg=fiotclient
+$ (.meu-ambiente) pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
 
-
-E para testar se a instalção foi feita corretamente, fazemos o comando de import do Python ::
+E para testar se a instalação foi feita corretamente, fazemos o comando de import do Python ::
 
 
 $ (.meu-ambiente) ipython

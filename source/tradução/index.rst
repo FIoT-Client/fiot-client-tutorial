@@ -75,6 +75,9 @@ Installing the backend: Docker
 
 In order to prepare the environment for the execution of this tutorial, first we need to run the GEs that will be necessary for the creations of the IoT Applications using the FIWARE. For that purpose, was planned the architecture presented on this `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composed by the main needed components for the creation of the applications that uses context and IoT manipulation resources on the platform.
 
+.. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png
+Figure 01 - Architecture of the selected Fiware components for this tutorial.
+
 In the picture it is possible to identify components resposible for the communication with the devices (IDAS), context Information storage and manipulation (Orion Context Broker), communications with databases for storing measurements (Cygnus) and the databases used for perform that persistence, and for the execution of this tutorial were chosen a *MySQL* adn a *MongoDB* Databases, and in addition it was used the FIWARE component responsible for storage historical data, making possible the storage and query of aggregate historical data (STH Comet).
 
 To create the environment composed by all these components, it was used `Docker <https://www.docker.com>`__, that allows from available images of the selected FIWARE components, can be possible to define configuration parameters and the way that communication between theses components will occur.
@@ -360,7 +363,7 @@ Under construction!
 
 .. end-visualize-ELK
 
-Consulta ao Orion
+Query Orion
 -----------------
 
 .. begin-visualize-Orion
