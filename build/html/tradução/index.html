@@ -131,7 +131,7 @@
 <li><a class="reference internal" href="#mysql">Mysql</a></li>
 <li><a class="reference internal" href="#mongodb">MongoDB</a></li>
 <li><a class="reference internal" href="#elk">ELK</a></li>
-<li><a class="reference internal" href="#consulta-ao-orion">Consulta ao Orion</a></li>
+<li><a class="reference internal" href="#query-orion">Query Orion</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +238,7 @@
 <li><a class="reference internal" href="#mysql" id="id21">Mysql</a></li>
 <li><a class="reference internal" href="#mongodb" id="id22">MongoDB</a></li>
 <li><a class="reference internal" href="#elk" id="id23">ELK</a></li>
-<li><a class="reference internal" href="#consulta-ao-orion" id="id24">Consulta ao Orion</a></li>
+<li><a class="reference internal" href="#query-orion" id="id24">Query Orion</a></li>
 </ul>
 </li>
 </ul>
@@ -274,6 +274,8 @@
 <div class="section" id="installing-the-backend-docker">
 <h3><a class="toc-backref" href="#id5">Installing the backend: Docker</a><a class="headerlink" href="#installing-the-backend-docker" title="Permalink to this headline">¶</a></h3>
 <p>In order to prepare the environment for the execution of this tutorial, first we need to run the GEs that will be necessary for the creations of the IoT Applications using the FIWARE. For that purpose, was planned the architecture presented on this <a class="reference external" href="https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg">link</a>, composed by the main needed components for the creation of the applications that uses context and IoT manipulation resources on the platform.</p>
+<img alt="https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png" src="https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png" />
+<p>Figure 01 - Architecture of the selected Fiware components for this tutorial.</p>
 <p>In the picture it is possible to identify components resposible for the communication with the devices (IDAS), context Information storage and manipulation (Orion Context Broker), communications with databases for storing measurements (Cygnus) and the databases used for perform that persistence, and for the execution of this tutorial were chosen a <em>MySQL</em> adn a <em>MongoDB</em> Databases, and in addition it was used the FIWARE component responsible for storage historical data, making possible the storage and query of aggregate historical data (STH Comet).</p>
 <p>To create the environment composed by all these components, it was used <a class="reference external" href="https://www.docker.com">Docker</a>, that allows from available images of the selected FIWARE components, can be possible to define configuration parameters and the way that communication between theses components will occur.</p>
 <p>Note: in case that already exists a configured and available envirnoment that presents the components cited on the image, it is possible to skip the next steps to configure the environment in your setup.</p>
@@ -463,8 +465,8 @@ $ cd my-directory
 <h3><a class="toc-backref" href="#id23">ELK</a><a class="headerlink" href="#elk" title="Permalink to this headline">¶</a></h3>
 <p>Under construction!</p>
 </div>
-<div class="section" id="consulta-ao-orion">
-<h3><a class="toc-backref" href="#id24">Consulta ao Orion</a><a class="headerlink" href="#consulta-ao-orion" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="query-orion">
+<h3><a class="toc-backref" href="#id24">Query Orion</a><a class="headerlink" href="#query-orion" title="Permalink to this headline">¶</a></h3>
 <p>Under construction!</p>
 </div>
 </div>
