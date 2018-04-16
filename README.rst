@@ -85,11 +85,17 @@ Inicialmente é necessário realizar a instalação do Docker em sua máquina, c
 
 Também é necessário instalar a ferramenta docker-compose, que possibilitará que o ambiente composto por todos os componentes selecionados possa ser facilmente executado. Os passos para a instalação podem ser acessados no `link <https://docs.docker.com/compose/install>`__.
 
-Tendo instalado corretamente o Docker e o docker-compose, você está pronto para rodar o ambiente. Para isso, você deverá acessar o diretório no qual o repositório de tutorial foi clonado, no qual existe um arquivo chamado `docker-compose.yml <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/deploy/full/docker-compose.yml>`__, e, a partir da linha de comando do seu sistema operacional, executar o comando: ::
+Com o Docker e o Docker-compose instalados corretamente, agora é possível rodar o ambiente. Para isso, é necessário acessar o diretório em que o repositório de tutorial foi clonado, e lá o usuário tem a opção de escolher qual forma ele quer rodar o ambiente, seja rodando todos os componentes em apenas uma máquina, em que o usuário deve acessar o diretório chamado de "full", disponível neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy>`__, no qual dentro dele há um arquivo chamado docker-compose.yml, e um diretório com arquivos de configuração dos componentes listados anteriormente. Após fazer todas as configurações necessárias para o seu ambiente, o seguinte comando deve ser executado no terminal do sistema operacional: ::
 
 $ docker-compose up -d
 
-Esse comando executará todos os componentes necessários para a execução do tutorial e, caso nenhuma mensagem de erro tenha sido exibida, deverá estar executando corretamente.
+Caso o usuário prefira rodar os componentes do ambiente em máquinas separadas, existe a opção de rodar o ambiente em dois nós distintos, em que um nó está localizado os bancos de dados do ambiente, enquanto o outro está localizado os componentes do FIWARE. Os nós dos componentes do FIWARE e dos bancos de dados estão localizados neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy/node-01>`__ e neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy/node-02>`__, respectivamente. Para rodar os ambientes, é feito o mesmo procedimento descrito no parágrafo anterior, em que após fazer todas configurações necessárias para o ambiente do usuário, é feito o seguinte comando no terminal: ::
+
+$ docker-compose up -d
+
+.. note:: Nesse caso, o comando acima é feito para cada nó do ambiente, ou seja, é necessário ir no diretorio do nó 1 e do nó 2 e fazer o mesmo comando.  
+
+
 
 Para testar se o ambiente foi configurado e está sendo executado corretamente, abra o seu navegador e acesse o endereço localhost:1026/version e deverá ser retornado um *JSON* apresentando a versão do componente Orion em execução.
 
