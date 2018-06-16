@@ -1,6 +1,6 @@
-var MQTT_HOST = '192.168.99.100'
-var API_KEY = '4jggokgpepnvsb2uv4s40d59ov'
-var DEVICE_ID = 'UL_LED'
+var MQTT_HOST = '[YOUR_MQTT_HOST_ADDRESS]'
+var API_KEY = '[YOUR_SERVICE_API_KEY]'
+var DEVICE_ID = '[YOUR_DEVICE_ID]'
 
 var mqtt = require('mqtt')
 var client = mqtt.connect('mqtt://' + MQTT_HOST)
