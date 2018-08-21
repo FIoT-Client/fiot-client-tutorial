@@ -1,0 +1,37 @@
+{
+    "devices": [
+        {
+            "device_id": "[DEVICE_ID]",
+            "entity_name": "[ENTITY_ID]",
+            "entity_type": "thing",
+            "timezone": "America/Fortaleza",
+            "transport": "MQTT",
+            "attributes": [
+                {
+                    "object_id": "p",
+                    "name": "presence",
+                    "type": "bool"
+                },
+                {
+                    "object_id": "s",
+                    "name": "fan_state",
+                    "type": "int"
+                }
+            ],
+            "commands": [
+                {
+                    "name": "change_fan_state",
+                    "type": "command",
+                    "value": "[DEVICE_ID]@change_state|%s"
+                }
+            ],
+            "static_attributes": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "value": "[DEVICE_ID]"
+                }
+            ]
+        }
+    ]
+}
