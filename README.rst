@@ -32,7 +32,7 @@ Introdução
 Conceituação Teórica
 --------------------
 
-A plataforma `FIWARE <https://www.fiware.org>`__ apresenta um ambiente baseado na plataforma de computação em nuvem `OpenStack <https://www.openstack.org>`__ com algumas modificações bem como com a adição de outros componentes. Ela apresenta um conjunto de APIs padronizadas que, entre outras coisas, torna mais fácil realizar a comunicação com a Internet das Coisas (IoT) e manipulação de informações de contexto. Ela facilita  análises sobre grandes volumes de dados e fornecimento de médias em tempo real, trazendo facilidades para manipulação de informações de contexto, análise de eventos em tempo real, coleta de informações a partir de sensores e ação sobre atuadores, controle de acesso, entre tantas outras funcionalidades.
+A plataforma `FIWARE <https://www.fiware.org>`__ apresenta um ambiente baseado na plataforma de computação em nuvem `OpenStack <https://www.openstack.org>`__ com algumas modificações bem como com a adição de outros componentes. Ela apresenta um conjunto de APIs padronizadas que, entre outras coisas, torna mais fácil realizar a comunicação com a Internet das Coisas (IoT) e manipulação de informações de contexto. Ela facilita  análises sobre grandes volumes de dados e fornecimento de médias em tempo real, trazendo facilidades para manipulação de informações de contexto, análise de eventos em tempo real, coleta de informações a partir de sensores e ação sobre atuadores, controle de acesso, entre tantas outras funcionalidades.
 
 Esses conjuntos de funcionalidades são agrupados na plataforma em forma de capítulos, sendo cada um deles composto por um conjunto de GEs (Generic Enablers), nomenclatura dada a componentes dentro da plataforma.
 
@@ -143,10 +143,32 @@ $ (.meu-ambiente) ipython
 
 Instalando o front-end: GUI Web
 ----------------------------------
-
 .. begin-GUI
 
-Em breve!
+A GUI é um projeto subdividido em dois subprojetos: backend e frontend. Cada subprojeto contém um container docker. 
+
+
+Criando a imagem da aplicação de backend
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Para começar, deve ser criado a imagem da aplicação de backend através dos seguintes passos dentro da pasta que contém o Dockerfile da aplicação de backend
+
+$ docker build -t fiot-client-gui/backend .
+
+
+Criando a imagem da aplicação de frontend
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Para começar, deve ser criado a imagem da aplicação de frontend através dos seguintes passos dentro da pasta que contém o Dockerfile da aplicação de frontend
+
+$ docker build -t fiot-client-gui/frontend .
+
+
+Criando o ambiente
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Na raiz do projeto execute o seguinte comando
+
+docker-compose up -d
 
 .. end-GUI
 
