@@ -1,5 +1,5 @@
 **************************************************
-Tutorial de instalação e utilização do FIoT-Client
+FIoT-Client's installation and use Tutorial
 **************************************************
 
 .. contents::
@@ -9,49 +9,52 @@ Tutorial de instalação e utilização do FIoT-Client
 
 .. _autores:
 
-Autores
+Authors
 =======
 
 
-Autores:
+Authors:
 
--  `Carlos Eduardo da Silva (Orientador)  <https://projetos.imd.ufrn.br/kaduardo>`__ -> `Contato <kaduardo@imd.ufrn.br>`__
--  `Lucas Cristiano Calixto Dantas <https://github.com/lucascriistiano>`__ -> `Contato <lucascristiano27@gmail.com>`__
--  `Lucas Ramon Bandeira da Silva <https://github.com/lucasramon>`__ -> `Contato <lucas.ramon.jc@gmail.com>`__
+-  `Carlos Eduardo da Silva (Advisor)  <https://projetos.imd.ufrn.br/kaduardo>`__ -> `Contact <kaduardo@imd.ufrn.br>`__
+-  `Lucas Cristiano Calixto Dantas <https://github.com/lucascriistiano>`__ -> `Contact <lucascristiano27@gmail.com>`__
+-  `Lucas Ramon Bandeira da Silva <https://github.com/lucasramon>`__ -> `Contact <lucas.ramon.jc@gmail.com>`__
 
 
 
 .. _introducao:
 
-Introdução
+Introduction
 ====================
 
 
 .. begin-conceituacaoTeorica
 
-Conceituação Teórica
+Theoretical Concepts
 --------------------
 
-A plataforma `FIWARE <https://www.fiware.org>`__ apresenta um ambiente baseado na plataforma de computação em nuvem `OpenStack <https://www.openstack.org>`__ com algumas modificações bem como com a adição de outros componentes. Ela apresenta um conjunto de APIs padronizadas que, entre outras coisas, torna mais fácil realizar a comunicação com a Internet das Coisas (IoT) e manipulação de informações de contexto. Ela facilita  análises sobre grandes volumes de dados e fornecimento de médias em tempo real, trazendo facilidades para manipulação de informações de contexto, análise de eventos em tempo real, coleta de informações a partir de sensores e ação sobre atuadores, controle de acesso, entre tantas outras funcionalidades.
-
-Esses conjuntos de funcionalidades são agrupados na plataforma em forma de capítulos, sendo cada um deles composto por um conjunto de GEs (Generic Enablers), nomenclatura dada a componentes dentro da plataforma.
-
-Em relação a aplicações IoT, a plataforma fornece GEs que permitem que "coisas" se tornem recursos de contexto disponíveis, pesquisáveis, acessíveis e utilizáveis, possibilitando a interação de Apps FIWARE com objetos do mundo real. As "coisas" representam qualquer objeto físico, organismo vivo, pessoa ou conceito de interesse a partir da perspectiva de uma aplicação e seus parâmetros são totalmente ou parcialmente atrelados a sensores, atuadores (ou uma combinação desses). A plataforma ajuda a abstrair a complexidade e alta fragmentação de tecnologias IoT e de cenários de implantação.
+The `FIWARE <https://www.fiware.org>`__ platform presents an enviroment based on the cloud computing platform `OpenStack <https://www.openstack.org>`__ with some changes and the addition of other components. It presents a set of standardized APIs that make the communication with the Internet of Things (IoT) and manipulating context information easier. It facilitates the analysis of big sets of data and the provision of real time average, making real time events analysis, information gathering from sensors, action on actuators easier. 
 
 
-Entender alguns conceitos é fundamental para a utilização das APIs FIWARE e, consequentemente, ferramentas que façam uso dessas. Logo, abaixo serão definidos alguns conceitos que facilitam a compreensão do que será apresentado durante esse tutorial.
+that set of functionalities are grouped in the form of chapters, and each chapter is made by a set of GEs (generic enablers), being this the name of each component in the platform.
 
-**Dispositivo (Device):** Também conhecido como nó-fim IoT (IoT end-node), diz respeito a uma entidade de hardware, componente ou sistema. Ele é respnsável por medir ou influenciar as propriedades de uma coisa/grupo de coisas (ou ambas, concorrentemente). Sensores e atuadores são exemplos de dispositivos.
+About the IoT applications, the platform offers GES that allows that "things" become context resources that are available, searchable, accessible and usable, making possible the interaction of Fiware Apps with real world objects. The "things" can represent any phisical object, living being, person or concept of interest from the perspective of a application, and their parameters are totally or partially bound to sensors, actuators (or a combination of both of them).
 
-**Nó-Fim IoT (IoT End-Node):** O termo é usado na documentação para dispositivos físicos complexos com diversos sensores e atuadores, como, por exemplo, um sistema complexo baseado em Arduino. Dispositivos podem usar protocolos de comunicação padronizados ou proprietários, que podem ser enviados nativamente para os GEs de Backend ou traduzidos em outro protocolo padronizado ou proprietário nos Gateways IoT, como a conversão desses protocolos específicos para OMA NGSI que pode ser realizada em GEs FIWARE, por exemplo. Um Arduino ou Raspberry Pi são exemplos de IoT End-Nodes.
 
-**Recurso IoT (IoT Resource):** Refere-se a um elemento computacional que provê acesso a dispositivos sensores/atuadores. Um modelo de informação para a descrição de recursos IoT pode incluir informações de contexto, como, por exemplo, localização, precisão, informação de status, etc. Dados a nível de recursos IoT consistem não apenas no dado medido, mas também informação de contexto, como tipo de dado, um instante de tempo, precisão da medição e o sensor a partir do qual a medição foi realizada, etc. Recursos IoT podem ser endereçados usando um esquema de endereçamento uniforme e são geralmente hospedados no dispositivo mas também apresentam uma representação lógica no backend.
+Some important concepts that are important to know to use this tutorial are listed below.
 
-**Coisa (Thing):** Diz respeito a qualquer objeto, pessoa ou lugar no mundo real. São representadas como coisas virtuais e, em sua respresentação, possuem um ID de entidade, um tipo e diversos atributos. Sensores podem ser modelados como coisas virtuais, porém, coisas do mundo real, sejam essas concretas ou abstratas, (como quartos, pessoas, grupo, etc.), também podem ser modelados como coisas virtuais. Dados a nível de coisas consistem de descrições das coisas e seus atributos, podendo constar também informações sobre como os dados foram obtidos através de meta  dados.
+**Device:** Also Known as IoT end-node, they are a hardware, component or system entity. They are designated for measure or influence the properties of a thing, or a group of things. Sensors and actuators are examples of devices.
 
-**Entidade de Contexto NGSI (NGSI Context-Entity):** IoT End-Nodes, Recursos IoT e "Coisas" são representados como Entidades de Contexto NGSI no GE Context Broker do capítulo de dados, logo desenvolvedores precisam aprender apenas a mesma API dessa GE, utilizada para informações de contexto, para também gerenciar informações de aplicações IoT. As informações de medições de sensores pode ser obtida através da leitura de atributos dessas entidades, enquanto o acionamento de comandos em atuadores pode ser feita a partir da atualização em atributos específicos que representam comandos nessas.
+**IoT End-Node:** this term is used in the documentation for complex phisical devices with many sensors and actuators, like an Arduino based system, for example. Devices can use standardized or proprietary communication protocols, that can be natively send for the backend GEs or translated in other standardized or proprietary protocol in the IoT gateways, like the conversion of that specific protocol for the OMA NGSI, that can be made in the FIWARE GEs, for example. An Arduino or Raspberry pi are examples of IoT End-Nodes.
 
-**Service e Service-Path:** São utilizados para definir o escopo utilizado para a execução de requisições e operações, fazendo com que as operações necessárias sejam realizadas sobre dispositivos e entidades com determinados IDs únicos dentro de um escopo específico, localizados juntamente com os valores do Service e Service-Path definidos no momento do registro e envio de medições a dispositivos.
+**IoT Resource:** The tern refers to a computational element that provides acess to sensors/actuators devices. An information model for the description of IoT resources can include context information like precision, localization, status information, etc. IoT resource data level consists not only in the measured data itself, but also context information, like the type of data, a time instant, etc. IoT resoruces can be addressed using an uniform addressing scheme and they are usually hosted in the device but also presentes a logical representation in the backend.
+
+**Thing:** this term can refer to any object, person or place in the real world. they are represented as virtual things and each representation has an entity ID, one typer and diverses attributes. Sensors can be modeled as virtual things, but things in the real world, either concrete or abstract also can be modeled as virtual things. Data at level of things consists of things description and their attributes, it may also be informations about how the data was obtained through metadata.
+
+
+**NGSI Context-Entity:** IoT End-Nodes, IoT resources and "things" are represented as NGSI context entities in the GE data chapter context broeker, therefore developers need to learn just the same API of that GE, used for context information, as well to manage information of IoT applications. The informations of measures of sensors can be obtained through reading of the attributes of these entities.
+
+**Service and Service-Path:** They are used to defne the utilized scope for the execution of requests and opertations, making the required operations are perfomed over devices and entities with given unique inside a specific scope, located together with the values of the Service and Service-path defined at the moment of the register of a device and when it sends a measure.
+
 
 .. end-conceituacaoTeorica
 
@@ -59,217 +62,192 @@ Entender alguns conceitos é fundamental para a utilização das APIs FIWARE e, 
 
 .. _ambienteInstalacao:
 
-Instalação do ambiente
-======================
+Installing the environment
+==========================
 
-O ambiente é formado por dois componentes: o back-end utilizando Docker, e o front-end utilizando o FIoT-Client.
+The environment are made by two components: the backend using Docker, and the frontend using the FIoT-Client.
 
 
-Instalando o back-end: Docker
------------------------------
+Installing the backend: Docker
+-------------------------------
 
 .. begin-docker
 
-Para preparar o ambiente para a execução do tutorial, precisamos primeiro rodar os GEs que serão necessários para a criação de aplicações IoT utilizando o FIWARE. Para isso, foi planejada a arquitetura apresentada neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composta pelos principais componentes necessários para criação de aplicações que usem recursos de manipulação de contexto e IoT na plataforma.
+In order to prepare the environment for the execution of this tutorial, first we need to run the GEs that will be necessary for the creations of the IoT Applications using the FIWARE. For that purpose, was planned the architecture presented in the Figure 01, composed by the main needed components for the creation of the applications that uses context and IoT manipulation resources on the platform.
 
 .. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png
-Figura 01 - Arquitetura dos componentes FIWARE selecionados para o tutorial
+Figure 01 - Architecture of the selected Fiware components for this tutorial.
 
-Nela é possível identificar componentes responsáveis pela comunicação com dispositivos (IDAS), armazenamento e manipulação de informações de contexto (Orion Context Broker), comunicação com bases de dados para armazenamento de medições (Cygnus) e as próprias bases de dados utilizadas para realizar essa persistência, tendo sido escolhidos para a execução do tutorial um banco de dados *MySQL* e um *MongoDB*, além do componente FIWARE responsável pelo armazenamento de dados históricos, possibilitando o armazenamento e consulta de dados históricos agregados (STH Comet).
+In the picture above it is possible to identify components resposible for the communication with the devices (IDAS), context Information storage and manipulation (Orion Context Broker), communications with databases for storing measurements (Cygnus) and the databases used for perform that persistence, and for the execution of this tutorial were chosen a *MySQL* adn a *MongoDB* Databases, and in addition it was used the FIWARE component responsible for storage historical data, making possible the storage and query of aggregate historical data (STH Comet).
 
-Para criar o ambiente composto por todos esses componentes foi utilizada a ferramenta `Docker <https://www.docker.com>`__, que permite que, a partir de imagens disponibilizadas dos componentes FIWARE selecionados, seja possível definir parâmetros de configuração bem como a forma como ocorrerá a comunicação entre esses componentes e o modo que esses estarão acessíveis para uso por aplicações.
+To create the environment composed by all these components, it was used `Docker <https://www.docker.com>`__, that allows from available images of the selected FIWARE components, can be possible to define configuration parameters and the way that communication between theses components will occur.
 
-OBS: Caso já exista um ambiente configurado e disponível que apresenta os componentes utilizados pelo tutorial e apresentados na imagem acima, é possível pular os passos seguintes para configuração do ambiente em sua máquina.
+Note: in case that already exists a configured and available envirnoment that presents the components cited on the image, it is possible to skip the next steps to configure the environment in your setup.
 
-Inicialmente é necessário realizar a instalação do Docker em sua máquina, caso já não o tenha instalado. Os passos para a instalação em seu sistema operacional pode ser acessado no `link <https://www.docker.com/get-docker>`__.
+First it is necessary to install Docker in your setup, the tutorial to install Docker can be found on this `link <https://www.docker.com/get-docker>`__.
 
-Também é necessário instalar a ferramenta docker-compose, que possibilitará que o ambiente composto por todos os componentes selecionados possa ser facilmente executado. Os passos para a instalação podem ser acessados no `link <https://docs.docker.com/compose/install>`__.
+Also is necessary to install the tool called docker-compose, that will make possible that the environment composed by all the selected components can be easily executed. the tutorial to install docker-compose can be found on this `link <https://docs.docker.com/compose/install>`__.
 
-Com o Docker e o Docker-compose instalados corretamente, agora é possível rodar o ambiente. Para isso, é necessário acessar o diretório em que o repositório de tutorial foi clonado, e lá o usuário tem a opção de escolher qual forma ele quer rodar o ambiente, seja rodando todos os componentes em apenas uma máquina, em que o usuário deve acessar o diretório chamado de "full", disponível neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy>`__, no qual dentro dele há um arquivo chamado docker-compose.yml, e um diretório com arquivos de configuração dos componentes listados anteriormente. Após fazer todas as configurações necessárias para o seu ambiente, o seguinte comando deve ser executado no terminal do sistema operacional: ::
-
-$ docker-compose up -d
-
-Caso o usuário prefira rodar os componentes do ambiente em máquinas separadas, existe a opção de rodar o ambiente em dois nós distintos, em que um nó está localizado os bancos de dados do ambiente, enquanto o outro está localizado os componentes do FIWARE. Os nós dos componentes do FIWARE e dos bancos de dados estão localizados neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy/node-01>`__ e neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/deploy/node-02>`__, respectivamente. Para rodar os ambientes, é feito o mesmo procedimento descrito no parágrafo anterior, em que após fazer todas configurações necessárias para o ambiente do usuário, é feito o seguinte comando no terminal: ::
+After you had correctly installed the Docker and the Docker-compose, you are ready to run the environment. For this, you have to acess the directory in which the repository was cloned, there is a file named `docker-compose.yml <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/deploy/full/docker-compose.yml>`__, and in your terminal you must execute the following command: ::
 
 $ docker-compose up -d
 
-.. note:: Nesse caso, o comando acima é feito para cada nó do ambiente, ou seja, é necessário ir no diretorio do nó 1 e do nó 2 e fazer o mesmo comando.  
+This command will execute all the needed components for the execution of this tutorial.
 
-
-
-Para testar se o ambiente foi configurado e está sendo executado corretamente, abra o seu navegador e acesse o endereço localhost:1026/version e deverá ser retornado um *JSON* apresentando a versão do componente Orion em execução.
-
+To check if the environment was configured and it's running correctly, open your browser and type "localhost:1026/version" and it will be returned a *JSON* showing the version of the Orion component in execution. 
 
 
 .. end-docker
 
-Instalando o front-end : FIoT-Client-Python 
+Installing the frontend : FIoT-Client-Python 
 ---------------------------------------------
 
-Configuração do ambiente virtual
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Virtual Environment Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para começar, deve ser criado um diretório onde ficará o ambiente instalado, e acessá-lo ::
+First, it must be created a directory where the environment will be installed, and then acess it ::
 
-$ mkdir meu-diretorio
-$ cd meu-diretorio
-
-Após a criação do diretório, é criado um ambiente virtual Python ::
-
-$ python -m venv .meu-ambiente
-
-Para ativá-lo, usamos o comando source ::
-
-$ source .meu-ambiente/bin/activate
-
-Com o ambiente virtual já criado, é feita a instalação do iPython ::
-
-$ (.meu-ambiente) pip install ipython
+$ mkdir my-directory
+$ cd my-directory
 
 
-Instalação da biblioteca FIoT-Client
+After the directory is created, it's created a Python virtual environment ::
+
+$ python -m venv .my-environment
+
+To activate it, we use the source command ::
+
+$ source .my-environment/bin/activate
+
+
+With the virtual environment created, the installation of iPython is done ::
+
+$ (.my-environment) pip install ipython
+
+
+Installing the FIoT-Client library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para a instalação da biblioteca, é usado o comando ::
+For install the library, it's used the command ::
 
-$ (.meu-ambiente) pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
-
-E para testar se a instalação foi feita corretamente, fazemos o comando de import do Python ::
+$ (.my-environment)  pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
 
 
-$ (.meu-ambiente) ipython
+In order to test if the installation was made correctly, we use the python import command :: 
+
+$ (.my-environment) ipython
 >>> from fiotclient import iot
 
 
-Instalando o front-end: GUI Web
+Installing the frontend: GUI Web
 ----------------------------------
+
 .. begin-GUI
 
-A GUI é um projeto subdividido em dois subprojetos: backend e frontend. Cada subprojeto contém um container docker. 
-
-
-Criando a imagem da aplicação de backend
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para começar, deve ser criado a imagem da aplicação de backend através dos seguintes passos dentro da pasta que contém o Dockerfile da aplicação de backend
-
-$ docker build -t fiot-client-gui/backend .
-
-
-Criando a imagem da aplicação de frontend
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Para começar, deve ser criado a imagem da aplicação de frontend através dos seguintes passos dentro da pasta que contém o Dockerfile da aplicação de frontend
-
-$ docker build -t fiot-client-gui/frontend .
-
-
-Criando o ambiente
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Na raiz do projeto execute o seguinte comando
-
-docker-compose up -d
+Under Construction!
 
 .. end-GUI
 
 .. _registrarDispositivo:
 
-Registrando um dispositivo
+Registering a device
 ==========================
 
-Usando FIoT-Client
+Using FIoT-Client
 ------------------
 
-Registrando o dispositivo no Fiware
+Registering the device on Fiware
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. begin-FIoTClient-register
 
-Configurar arquivo de configuração (config.ini)
+Configure the configuration file (config.ini)
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Para iniciar o registro do dispositivo, primeiro devemos criar um arquivo de configuração, porém para facilitar o andamento do tutorial, há um arquivo 
-pré-programado de configuração neste `repositório <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__,
-no qual a partir dele o usuário pode alterar os valores dos endereços dos componentes dos quais ele irá utilizar.
+To start the register of the device, first we need to create a configuration file, in order to make things simple, there is a pre-programmed file on this `repository <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__, which from him the user can change the values of the addresses of the components of which will be used.
 
 
 
-Criação do service e do Service Path
-""""""""""""""""""""""""""""""""""""
+Creation of the service and the Service Path
+""""""""""""""""""""""""""""""""""""""""""""
+After you finish the configuration of the config.ini, the next step is the creation of the Service and the Service Path, using the fiotclient library ::
 
-Após a configuração do config.ini, o próximo passo  é a criação do Service e do Service Path, utilizando a biblioteca fiotclient instalada anteriormente. ::
+$ (.my-environment) ipython
+>>> from fiotclient import iot #imports the library 'fiotclient'
+>>> client_iot = iot.FiwareIotClient('config.ini') #configure the components using the config.ini
+>>> client_iot.create_service('SERVICE_NAME', '/SERVICE_PATH') #create the service, defining your name and path
 
-$ (.meu-ambiente) ipython
->>> from fiotclient import iot #importa a biblioteca 'fiotclient'
->>> client_iot = iot.FiwareIotClient('config.ini') #configura os componentes utilizando o config.ini
->>> client_iot.create_service('SERVICE_NAME', '/SERVICE_PATH') #cria o serviço, definindo o seu nome e o seu caminho
 
-obs: o caminho do serviço deve ser precedido de uma barra '/' e não pode conter certos caracteres especiais como por exemplo o underscore ('_').
+note: the path of the service must be preceded by a slash '/' and cannot contain certain special characters like the underscore ('_').
 
-Após a criação do serviço, haverá uma mensagem de confirmação, junto com uma string, que deve ser guardada em conjunto com o nome do Service e do seu respectivo Service Path para serem usados quando houver o registro de um dispositivo novo. A mensagem de confirmação é mostrada dessa forma: ::
+After the creation of the service, it will be a confirmation message, with a string, that must be maintained together with the name of the service and with the service path, to be used together when a new device is registered. The confirmation message is displayed this way: :: 
+
 
 {"status_code": 201,"api_key": 'API_KEY'}
 
 
-Registrando o dispositivo
+Registering the device
 """""""""""""""""""""""""
+For register a new device, first we must set in which service and service path he will be bound, and that is done by using the following command: ::
 
-Para o registro de um novo dispositivo, primeiros devemos selecionar em qual Service e em qual Service Path ele irá ficar, no qual é feito utilizando os comando: ::
 
 >>> client_iot.set_service('SERVICE_NAME', '/SERVICE_PATH')
 
-Usando os valores guardados anteriormente. Com isso, o passo seguinte se dá por atribuir a API_KEY para o dispositivo, usando o comando:
+Using the values stored before. The next step is to assign the API_KEY to device, using the command: ::
 
-  
 >>> client_iot.set_api_key('API_KEY')
 
-Depois de feita todas as atribuições, o próximo passo é registrar o dispositivo, no qual é definido por um arquivo no formato JSON, em que alguns exemplos de dispositivos podem ser encontrados neste `repositório <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
-É recomendado que os arquivos dos disposítivos estejam salvos no mesmo diretório de onde estará rodando a aplicação.
+After you done all the assignments, the next step is to register the device, and this is done by a JSON format file, and some example of devices are available on this `repository <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
 
-Por fim, para registrar o dispositivo, é usado o seguinte comando: ::
+It's recommended that the device files are saved in the same directory as your application is running.
 
->>> client_iot.register_device('CAMINHO_DEVICE', 'ID_DEVICE', 'ID_ENTITY')
+Lastlym to register the device, its used the following command: ::
 
-tendo como argumentos o diretório em que está salvo o arquivo do dispositivo, o id do dispositivo, e o id da entidade na qual o dispositivo esta se relacionando, respectivamente. Todos estes valores estão contidos no arquivo JSON do dispositivo,.
+>>> client_iot.register_device('DEVICE_DIRECTORY', 'ID_DEVICE', 'ID_ENTITY')
 
-Para listagem dos dispositivos que estão registrados neste SERVICE, utilizamos o comando: ::
+The arguments of this function are the directory in which it is sabed the device file, the id of the device, and the entity id in which the device is related. All these values are in the device JSON file.
+
+For listing the device that are registered on this Service, it is used the following command::
+
 
 >>> client_iot.list_devices()
 
-Com isso o próximo passo é a configuração da entidade que estará se relacionando com o(s) dispositivo(s) da aplicação.
+After you're done, the next step is the configuration of the entity that will be related with the device(s) of the application.
 
-Configurando armazenamento (registrando bancos no Orion)
+
+Setting up Storage (registering databases in the Orion)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Criação da entidade
+Entity's creation
 """""""""""""""""""
-Para a criação da entidade, devemos primeiro importar da biblioteca fiotclient os métodos relacionados ao módulo de acesso à API da entidade, após isso devemos configurar os componentes da entidade usando o arquivo config.ini, e esse passo é feito através dos comandos: ::
+
+For the creation of the entity, first we need to import the methods related to the entity's API acess module, located in the fiotclient library, after that we must configure the components of the entity using the config.ini file. That steps are done through the following commands: ::
 
 >>> from fiotclient import context
 >>> client_context = context.FiwareContextClient('config.ini')
 
-Feito isso, agora é feita a atribuição da entidade ao SERVICE e ao SERVICE PATH desejado, utilizando o seguinte comando: ::
+After done that, now it's done the assignment of the entity to the desired Service and Service Path, using the following command: ::
 
 >>> client_context.set_service('SERVICE_NAME', '/SERVICE_PATH')
 
-Para checarmos as informações referentes a essa entidade, utilizamos o comando: ::
+In order to check the informations about this entity, we use the command: ::
 
 >>> client_context.get_entity_by_id('ID_ENTITY')
 
 
-Conectando a entidade com o Cygnus
+Connecting the entity with Cygnus
 """"""""""""""""""""""""""""""""""
 
-Para conectarmos a entidade com o Cygnus, uitlizamos o seguinte comando: ::
+To connect the entity with Cygnus, the following command is used: ::
 
 >>> client_context.subscribe_cygnus('ID_ENTITY', ['ATTR_01', ...])
 
-Sendo os atributos o id da entidade na qual se deseja conectar com o Cygnus, e os atributos dos dispositivos .
+The attributes of the function are the entity's id that is designated to connect with the Cygnus, and the device attributes.
 
-Com isso, é possivel enviar os dados coletados pelos dispositivos para um banco de dados, podendo ser um banco no MySQL, MongoDB, etc.
+After this, it's possible to send the collected data by the devices to a database, that database can be a MySQL, MongoDB, etc.
 
-E por fim, para enviar e armazenar o histórico de dados, utilizamos o seguinte comando: ::
+Lastly, to send and storage the historical data, we use the following command: ::
 
 >>> client_context.subscribe_historical_data('ID_ENTITY', ['ATTR_01', ...])
 
@@ -279,7 +257,7 @@ Usando o WEB GUI
 
 .. begin-WEB GUI-Register
 
-Em Breve!
+Under Construction!
 
 .. end-WEB GUi-Register
 
@@ -287,7 +265,7 @@ Em Breve!
 .. _programandoDispositivo:
 
 
-Programando um dispositivo
+Programming a device
 ==========================
 
 Arduino
@@ -295,7 +273,7 @@ Arduino
 
 .. begin-programming-Arduino
 
-Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT21 AM2301, no qual o arquivo se encontra neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
+On this example, it was used a DHT21 AM2301 temperature and humidity sensor, and the file can be found on this `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
 
 
 .. end-programming-Arduino
@@ -305,34 +283,33 @@ Raspberry Pi
 ------------
 
 .. begin-programming-RaspberryPi
-
-Neste exemplo, foi utilizado um sensor de temperatura e umidade DHT22 AM2302, no qual o arquivo se encontra neste `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
+On this example, it was used a DHT22 AM2302 temperature and humidity sensor, and the file can be found on this `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
 
 .. end-programming-RaspberryPi
 
 .. _visualizeData:
 
-Visualizando os dados gerados
-=============================
+Visualizing the generated data
+==============================
 
 
-Usando Web Gui
+Using Web Gui
 --------------
 
 .. begin-visualize-GUI
 
 
-Em Breve!
+Under construction!
 
 .. end-visualize-GUI
 
-Consulta ao banco de dados
---------------------------
+Database Query
+---------------
 
 
 .. begin-visualize-Database
 
-Em Breve!
+Under construction!
 
 
 .. end-visualize-Database
@@ -342,27 +319,28 @@ Mysql
 
 .. begin-visualize-mysql
 
-Ao fazer a criação do Service, é criado um banco de dados com o mesmo nome utilizado no momento do cadastro, porém, todo em letras minúsculas. Para cada Entidade registrada é também criada, no banco de dados do seu respectivo serviço, uma tabela no formato "SERVICE_PATH" + "_" + "ID_ENTIDADE" + "_" + "TIPO_ENTIDADE".
+At the moment that the service is created, it's created a database with the same name used at the moment of the register, but with lowecase letters. For each registered entity it's also created in the respective service, a table in the format "SERVICE_PATH" + "_" + "ENTITY_ID" + "_" + "ENTITY_TYPE".
 
-Para acessar o banco que está sendo utilizado no Service é utilizado o comando: 
-
-
-.. code-block:: sql
-   
-
-   use NOME_DO_BANCO_DE_DADOS
-
-Onde 'NOME_DO_BANCO_DE_DADOS' deve ser substituído pelo nome do banco criado para o serviço.
-
-Em seguida, selecionado o banco de dados do Service, para checar todos os dados registrados em uma entidade é utilizado o comando: 
+To acess the database that is being used in the Service its used the command:
 
 
 .. code-block:: sql
    
 
- SELECT * FROM TABELA_DA_ENTIDADE
+   use NAME_DATABASE
 
-Onde 'TABELA_DA_ENTIDADE' deve ser substituído pelo nome da tabela criada para a entidade desejada.
+Where 'NAME_DATABASE' must be replaced by the name of the created database for the service.
+
+To check all registered data in an entity is used the command:
+
+
+.. code-block:: sql
+   
+
+ SELECT * FROM ENTITY_TABLE
+
+ Where 'ENTITY_TABLE' must be replaced by the name of the created table for the entity.
+
 
 .. end-visualize-mysql
 
@@ -372,7 +350,7 @@ MongoDB
 .. begin-visualize-mongoDB
 
 
-Em Breve!
+Under construction!
 
 .. end-visualize-mongoDB
 
@@ -381,16 +359,16 @@ ELK
 
 .. begin-visualize-ELK
 
-Em Breve!
+Under construction!
 
 .. end-visualize-ELK
 
-Consulta ao Orion
+Query Orion
 -----------------
 
 .. begin-visualize-Orion
 
 
-Em Breve!
+Under construction!
 
 .. end-visualize-Orion

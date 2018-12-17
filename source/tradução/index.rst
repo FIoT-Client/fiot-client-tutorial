@@ -15,9 +15,9 @@ Authors
 
 Authors:
 
--  `Carlos Eduardo da Silva (Orientador)  <https://projetos.imd.ufrn.br/kaduardo>`__ -> `Contato <kaduardo@imd.ufrn.br>`__
--  `Lucas Cristiano Calixto Dantas <https://github.com/lucascriistiano>`__ -> `Contato <lucascristiano27@gmail.com>`__
--  `Lucas Ramon Bandeira da Silva <https://github.com/lucasramon>`__ -> `Contato <lucas.ramon.jc@gmail.com>`__
+-  `Carlos Eduardo da Silva (Advisor)  <https://projetos.imd.ufrn.br/kaduardo>`__ -> `Contact <kaduardo@imd.ufrn.br>`__
+-  `Lucas Cristiano Calixto Dantas <https://github.com/lucascriistiano>`__ -> `Contact <lucascristiano27@gmail.com>`__
+-  `Lucas Ramon Bandeira da Silva <https://github.com/lucasramon>`__ -> `Contact <lucas.ramon.jc@gmail.com>`__
 
 
 
@@ -73,12 +73,12 @@ Installing the backend: Docker
 
 .. begin-docker
 
-In order to prepare the environment for the execution of this tutorial, first we need to run the GEs that will be necessary for the creations of the IoT Applications using the FIWARE. For that purpose, was planned the architecture presented on this `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/extras/arquitetura.jpg>`__, composed by the main needed components for the creation of the applications that uses context and IoT manipulation resources on the platform.
+In order to prepare the environment for the execution of this tutorial, first we need to run the GEs that will be necessary for the creations of the IoT Applications using the FIWARE. For that purpose, was planned the architecture presented in the Figure 01, composed by the main needed components for the creation of the applications that uses context and IoT manipulation resources on the platform.
 
 .. image:: https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/extras/fiware_components_deploy.png
 Figure 01 - Architecture of the selected Fiware components for this tutorial.
 
-In the picture it is possible to identify components resposible for the communication with the devices (IDAS), context Information storage and manipulation (Orion Context Broker), communications with databases for storing measurements (Cygnus) and the databases used for perform that persistence, and for the execution of this tutorial were chosen a *MySQL* adn a *MongoDB* Databases, and in addition it was used the FIWARE component responsible for storage historical data, making possible the storage and query of aggregate historical data (STH Comet).
+In the picture above it is possible to identify components resposible for the communication with the devices (IDAS), context Information storage and manipulation (Orion Context Broker), communications with databases for storing measurements (Cygnus) and the databases used for perform that persistence, and for the execution of this tutorial were chosen a *MySQL* adn a *MongoDB* Databases, and in addition it was used the FIWARE component responsible for storage historical data, making possible the storage and query of aggregate historical data (STH Comet).
 
 To create the environment composed by all these components, it was used `Docker <https://www.docker.com>`__, that allows from available images of the selected FIWARE components, can be possible to define configuration parameters and the way that communication between theses components will occur.
 
@@ -119,7 +119,6 @@ To activate it, we use the source command ::
 
 $ source .my-environment/bin/activate
 
-Com o ambiente virtual já criado, é feita a instalação do iPython ::
 
 With the virtual environment created, the installation of iPython is done ::
 
@@ -131,7 +130,7 @@ Installing the FIoT-Client library
 
 For install the library, it's used the command ::
 
-$ (.my-environment) pip install -e git+https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-python.git#egg=fiotclient
+$ (.my-environment)  pip install -e git+https://github.com/FIoT-Client/fiot-client-python.git#egg=fiotclient
 
 
 In order to test if the installation was made correctly, we use the python import command :: 
@@ -166,7 +165,7 @@ Registering the device on Fiware
 Configure the configuration file (config.ini)
 """""""""""""""""""""""""""""""""""""""""""""""
 
-To start the register of the device, first we need to create a configuration file, in order to make things simple, there is a pre-programmed file on this `repository <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__, which from him the user can change the values of the addresses of the components of which will be used.
+To start the register of the device, first we need to create a configuration file, in order to make things simple, there is a pre-programmed file on this `repository <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/config.ini>`__, which from him the user can change the values of the addresses of the components of which will be used.
 
 
 
@@ -199,7 +198,7 @@ Using the values stored before. The next step is to assign the API_KEY to device
 
 >>> client_iot.set_api_key('API_KEY')
 
-After you done all the assignments, the next step is to register the device, and this is done by a JSON format file, and some example of devices are available on this `repository <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
+After you done all the assignments, the next step is to register the device, and this is done by a JSON format file, and some example of devices are available on this `repository <https://github.com/FIoT-Client/fiot-client-tutorial/tree/master/examples/devices>`__.
 
 It's recommended that the device files are saved in the same directory as your application is running.
 
@@ -274,7 +273,7 @@ Arduino
 
 .. begin-programming-Arduino
 
-On this example, it was used a DHT21 AM2301 temperature and humidity sensor, and the file can be found on this `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
+On this example, it was used a DHT21 AM2301 temperature and humidity sensor, and the file can be found on this `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/arduino/FiwareDHT/FiwareDHT.ino>`__.
 
 
 .. end-programming-Arduino
@@ -284,7 +283,8 @@ Raspberry Pi
 ------------
 
 .. begin-programming-RaspberryPi
-On this example, it was used a DHT22 AM2302 temperature and humidity sensor, and the file can be found on this `link <https://projetos.imd.ufrn.br/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
+On this example, it was used a DHT22 AM2302 temperature and humidity sensor, and the file can be found on this `link <https://github.com/FIoT-Client/fiot-client-tutorial/blob/master/examples/example_DHT2302.py>`__.
+
 .. end-programming-RaspberryPi
 
 .. _visualizeData:
