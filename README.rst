@@ -204,7 +204,7 @@ It's recommended that the device files are saved in the same directory as your a
 
 Lastlym to register the device, its used the following command: ::
 
->>> client_iot.register_device('DEVICE_DIRECTORY', 'ID_DEVICE', 'ID_ENTITY')
+>>> client_iot.register_device_from_file('DEVICE_DIRECTORY', 'ID_DEVICE', 'ID_ENTITY')
 
 The arguments of this function are the directory in which it is sabed the device file, the id of the device, and the entity id in which the device is related. All these values are in the device JSON file.
 

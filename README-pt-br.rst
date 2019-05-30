@@ -229,7 +229,7 @@ Depois de feita todas as atribuições, o próximo passo é registrar o disposit
 
 Por fim, para registrar o dispositivo, é usado o seguinte comando: ::
 
->>> client_iot.register_device('CAMINHO_DEVICE', 'ID_DEVICE', 'ID_ENTITY')
+>>> client_iot.register_device_from_file('CAMINHO_DEVICE', 'ID_DEVICE', 'ID_ENTITY')
 
 tendo como argumentos o diretório em que está salvo o arquivo do dispositivo, o id do dispositivo, e o id da entidade na qual o dispositivo esta se relacionando, respectivamente. Todos estes valores estão contidos no arquivo JSON do dispositivo,.
 
